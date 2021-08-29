@@ -1,0 +1,33 @@
+{
+  "name": "xcratch-create",
+  "version": "0.1.0",
+  "description": "Support tool to create new extension for Xcratch",
+  "bin": {
+    "xcratch-create": "./bin/create.js"
+  },
+  "files": [
+    "/bin",
+    "/template"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xcratch/xcratch-create.git"
+  },
+  "keywords": [
+    "scratch",
+    "xcratch"
+  ],
+  "author": "Koji Yokokawa",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/xcratch/xcratch-create/issues"
+  },
+  "homepage": "https://github.com/xcratch/xcratch-create#readme",
+  "dependencies": {
+    "adm-zip": "^0.5.5",
+    "replace-in-file": "^6.2.0"
+  }
+}
