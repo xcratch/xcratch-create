@@ -30,7 +30,7 @@ const blockIconURI = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAoCAYA
 /**
  * Scratch 3.0 blocks for example of Xcratch.
  */
-class <<extensionClass>> {
+class ExtensionBlocks {
 
     /**
      * @return {string} - the name of this extension.
@@ -86,9 +86,9 @@ class <<extensionClass>> {
     getInfo () {
         this.setupTranslations();
         return {
-            id: <<extensionClass>>.EXTENSION_ID,
-            name: <<extensionClass>>.EXTENSION_NAME,
-            extensionURL: <<extensionClass>>.extensionURL,
+            id: ExtensionBlocks.EXTENSION_ID,
+            name: ExtensionBlocks.EXTENSION_NAME,
+            extensionURL: ExtensionBlocks.extensionURL,
             blockIconURI: blockIconURI,
             showStatusButton: false,
             blocks: [
@@ -147,4 +147,4 @@ const extensionTranslations = {
     }
 };
 
-module.exports = <<extensionClass>>;
+module.exports = ExtensionBlocks;

@@ -6,14 +6,13 @@ This command supports to create a new code base of an extension for [Xcratch: Ex
 `xcratch-create` is a Node executable script to download template code and replace properties with the arguments. The created files can be used as base of your own extension.
 
 ```sh
-npx xcratch-create --repo=xcx-my-extension --account=github-account --extensionID=myExtension --extensionName='My Extension' --extensionClass=MyExtension
+npx xcratch-create --repo=xcx-my-extension --account=github-account --extensionID=myExtension --extensionName='My Extension'
 ```
 
 - --repo : Name of repository on GitHub
 - --account : Account on GitHub
 - --extensionID : ID of the extension in Xcratch
 - --extensionName : Name of the extension in Xcratch
-- --extensionClass : Class name of the extension in Xcratch
 
 
 ## 🤝 Contributing

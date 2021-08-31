@@ -56,12 +56,6 @@ if (!args['extensionName']) {
 }
 const extensionName = args['extensionName'];
 
-if (!args['extensionClass']) {
-    process.stderr.write('"--extensionClass=<extension class name>" is not set\n');
-    process.exit(1);
-}
-const extensionClass = args['extensionClass'];
-
 const outputDir = args['out'] ?
     path.resolve(process.cwd(), args['out']) :
     path.resolve(process.cwd(), repo);
@@ -99,14 +93,12 @@ const options = {
         /<<repo>>/g,
         /<<extensionID>>/g,
         /<<extensionName>>/g,
-        /<<extensionClass>>/g,
     ],
     to: [
         account,
         repo,
         extensionID,
         extensionName,
-        extensionClass,
     ],
 };
 
