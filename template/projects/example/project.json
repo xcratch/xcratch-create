@@ -48,7 +48,54 @@
       "variables": {},
       "lists": {},
       "broadcasts": {},
-      "blocks": {},
+      "blocks": {
+        "a4=fP3v4=(4iJp:x.yP5": {
+          "opcode": "looks_say",
+          "next": null,
+          "parent": "u0,7tME{KvwEe3VhJ:y;",
+          "inputs": {
+            "MESSAGE": [
+              3,
+              "0Ma!O1n;`PPH|iLNW*nO",
+              [
+                10,
+                "Hello!"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        },
+        "u0,7tME{KvwEe3VhJ:y;": {
+          "opcode": "event_whenflagclicked",
+          "next": "a4=fP3v4=(4iJp:x.yP5",
+          "parent": null,
+          "inputs": {},
+          "fields": {},
+          "shadow": false,
+          "topLevel": true,
+          "x": 96,
+          "y": 77
+        },
+        "0Ma!O1n;`PPH|iLNW*nO": {
+          "opcode": "<<extensionID>>_do-it",
+          "next": null,
+          "parent": "a4=fP3v4=(4iJp:x.yP5",
+          "inputs": {
+            "SCRIPT": [
+              1,
+              [
+                10,
+                "3 + 4"
+              ]
+            ]
+          },
+          "fields": {},
+          "shadow": false,
+          "topLevel": false
+        }
+      },
       "comments": {},
       "currentCostume": 0,
       "costumes": [
@@ -107,6 +154,6 @@
     "semver": "3.0.0",
     "vm": "0.2.0",
     "origin": "https://xcratch.github.io/editor",
-    "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 Safari/537.36"
+    "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"
   }
 }
