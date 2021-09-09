@@ -3,7 +3,7 @@
 
 const path = require('path');
 const replace = require('replace-in-file');
-const fs = require('fs');
+const fs = require('fs-extra');
 const admZip = require('adm-zip');
 
 function getArgs() {
@@ -60,24 +60,12 @@ const outputDir = args['out'] ?
     path.resolve(process.cwd(), args['out']) :
     path.resolve(process.cwd(), repo);
 
-function copyDir(src, dest) {
-    fs.mkdirSync(dest, { recursive: true });
-    const entries = fs.readdirSync(src, { withFileTypes: true });
-    for (const entry of entries) {
-        const srcPath = path.join(src, entry.name);
-        const destPath = path.join(dest, entry.name);
-        entry.isDirectory() ?
-            copyDir(srcPath, destPath) :
-            fs.copyFileSync(srcPath, destPath);
-    }
-}
-
 /**
  * Fetch template files
  * 
  */
 async function fetchTemplate() {
-    copyDir(path.resolve(__dirname, '../template'), outputDir);
+    fs.copySync(path.resolve(__dirname, '../template'), outputDir);
 }
 
 const options = {
