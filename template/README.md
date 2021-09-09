@@ -50,7 +50,7 @@ npm install
 
 ## 🏠 Home Page
 
-Open this page from [https://<<account>>.github.io/<<repo>>/]()
+Open this page from [https://<<account>>.github.io/<<repo>>/](https://<<account>>.github.io/<<repo>>/)
 
 
 ## 🤝 Contributing
