@@ -13,7 +13,7 @@ npx xcratch-create --repo=xcx-my-extension --account=github-account --extensionI
 - --account : Account on GitHub
 - --extensionID : ID of the extension in Xcratch
 - --extensionName : Name of the extension in Xcratch
-
+- --version : Show version of this command
 
 ## 🤝 Contributing
 

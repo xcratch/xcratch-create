@@ -31,6 +31,10 @@ function getArgs() {
 
 const args = getArgs();
 
+if (args['version'] || args['V']) {
+    process.stdout.write(`v.${process.env.npm_package_version}\n`);
+    process.exit(0);
+}
 
 if (!args['account']) {
     process.stderr.write('"--account=<github account>" is not set\n');
