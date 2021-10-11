@@ -92,6 +92,7 @@ const options = {
 
 async function resetRepo() {
     process.chdir(outputDir);
+    fs.renameSync('dot_gitignore', '.gitignore');
     try {
         const results = await replace(options)
         console.log('Replacement results:', results);
