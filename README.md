@@ -1,5 +1,5 @@
 # Xcratch Command to Create Extension
-This command supports to create a new code base of an extension for [Xcratch: Extendable Scratch3 Programming Environment](https://xcratch.github.io/).
+This command supports to create a new code base of an extension for [Xcratch](https://xcratch.github.io/): Extendable Scratch3 Programming Environment.
 
 ## Scaffold New Extension Code
 
