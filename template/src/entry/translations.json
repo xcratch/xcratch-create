@@ -1,8 +1,14 @@
 {
+  "en": {
+    "<<extensionID>>.entry.name": "<<extensionName>>",
+    "<<extensionID>>.entry.description": "Xcratch 拡張の例"
+  },
   "ja": {
-    "gui.extension.<<extensionID>>.description": "Xcratch 拡張の例"
+    "<<extensionID>>.entry.name": "<<extensionName>>",
+    "<<extensionID>>.entry.description": "Xcratch 拡張の例"
   },
   "ja-Hira": {
-    "gui.extension.<<extensionID>>.description": "Xcratch (えくすくらっち)かくちょうのれい"
+    "<<extensionID>>.entry.name": "<<extensionName>>",
+    "<<extensionID>>.entry.description": "Xcratch (えくすくらっち)かくちょうのれい"
   }
 }

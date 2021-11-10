@@ -15,7 +15,13 @@ import translations from './translations';
 let formatMessage = messageData => messageData.defaultMessage;
 
 const entry = {
-    name: '<<extensionName>>',
+    get name () {
+        return formatMessage({
+            id: '<<extensionID>>.entry.name',
+            default: '<<extensionName>>',
+            description: 'name of the extension'
+        });
+    },
     extensionId: '<<extensionID>>',
     extensionURL: 'https://<<account>>.github.io/<<repo>>/dist/<<extensionID>>.mjs',
     collaborator: '<<account>>',
@@ -25,7 +31,7 @@ const entry = {
         return formatMessage({
             defaultMessage: 'an extension for Xcratch',
             description: 'Description for this extension',
-            id: 'gui.extension.<<extensionID>>.description'
+            id: '<<extensionID>>.entry.description'
         });
     },
     featured: true,

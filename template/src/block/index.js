@@ -21,7 +21,6 @@ const setupTranslations = () => {
     if (localeSetup && localeSetup.translations[localeSetup.locale]) {
         Object.assign(
             localeSetup.translations[localeSetup.locale],
-            // eslint-disable-next-line no-use-before-define
             translations[localeSetup.locale]
         );
     }
@@ -45,7 +44,11 @@ class ExtensionBlocks {
      * @return {string} - the name of this extension.
      */
     static get EXTENSION_NAME () {
-        return '<<extensionName>>';
+        return formatMessage({
+            id: '<<extensionID>>.name',
+            default: '<<extensionName>>',
+            description: 'name of the extension'
+        });
     }
 
     /**

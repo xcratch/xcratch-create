@@ -1,8 +1,14 @@
 {
+  "en": {
+    "<<extensionID>>.name": "<<extensionName>>",
+    "<<extensionID>>.doIt": "do it [SCRIPT]"
+  },
   "ja": {
+    "<<extensionID>>.name": "<<extensionName>>",
     "<<extensionID>>.doIt": "[SCRIPT] を実行する"
   },
   "ja-Hira": {
+    "<<extensionID>>.name": "<<extensionName>>",
     "<<extensionID>>.doIt": "[SCRIPT] をじっこうする"
   }
 }
