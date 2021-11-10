@@ -78,6 +78,7 @@ const options = {
         'package.json',
         'src/**/*.js',
         'src/**/*.jsx',
+        'src/**/*.json',
         'projects/example/project.json',
     ],
     from: [

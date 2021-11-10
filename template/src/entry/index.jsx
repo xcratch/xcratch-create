@@ -4,6 +4,7 @@
 
 import iconURL from './entry-icon.png';
 import insetIconURL from './inset-icon.svg';
+import translations from './translations';
 
 /**
  * Formatter to translate the messages in this extension.
@@ -12,15 +13,6 @@ import insetIconURL from './inset-icon.svg';
  * @returns {string} - translated message for the current locale
  */
 let formatMessage = messageData => messageData.defaultMessage;
-
-const translationMap = {
-    'ja': {
-        'gui.extension.<<extensionID>>.description': 'Xcratch 拡張の例'
-    },
-    'ja-Hira': {
-        'gui.extension.<<extensionID>>.description': 'Xcratch (えくすくらっち)かくちょうのれい'
-    }
-};
 
 const entry = {
     name: '<<extensionName>>',
@@ -44,7 +36,7 @@ const entry = {
     setFormatMessage: formatter => {
         formatMessage = formatter;
     },
-    translationMap: translationMap
+    translationMap: translations
 };
 
 export {entry}; // loadable-extension needs this line.
