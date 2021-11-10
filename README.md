@@ -9,10 +9,10 @@ This command supports to create a new code base of an extension for [Xcratch](ht
 npx xcratch-create --repo=xcx-my-extension --account=github-account --extensionID=myExtension --extensionName='My Extension'
 ```
 
-- --repo : Name of repository on GitHub
+- --repo : Name of the repository on GitHub
 - --account : Account on GitHub
-- --extensionID : ID of the extension in Xcratch
-- --extensionName : Name of the extension in Xcratch
+- --extensionID : ID of the extension in Scratch (allowed RegExp `/^[a-z0-9]+$/i`)
+- --extensionName : Label string of the extension on the Editor in English
 - --version : Show version of this command
 
 ## 🤝 Contributing
