@@ -1,14 +1,14 @@
 {
   "en": {
     "<<extensionID>>.entry.name": "<<extensionName>>",
-    "<<extensionID>>.entry.description": "Xcratch 拡張の例"
+    "<<extensionID>>.entry.description": "Description of this extension"
   },
   "ja": {
     "<<extensionID>>.entry.name": "<<extensionName>>",
-    "<<extensionID>>.entry.description": "Xcratch 拡張の例"
+    "<<extensionID>>.entry.description": "拡張機能の説明"
   },
   "ja-Hira": {
     "<<extensionID>>.entry.name": "<<extensionName>>",
-    "<<extensionID>>.entry.description": "Xcratch (えくすくらっち)かくちょうのれい"
+    "<<extensionID>>.entry.description": "かくちょうきのうのせつめい"
   }
 }

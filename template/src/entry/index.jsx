@@ -4,7 +4,7 @@
 
 import iconURL from './entry-icon.png';
 import insetIconURL from './inset-icon.svg';
-import translations from './translations';
+import translations from './translations.json';
 
 /**
  * Formatter to translate the messages in this extension.

@@ -1,14 +1,14 @@
 import BlockType from '../../extension-support/block-type';
 import ArgumentType from '../../extension-support/argument-type';
-// import Cast from '../../util/cast';
-// import log from '../../util/log';
-import translations from './translations';
+import Cast from '../../util/cast';
+import log from '../../util/log';
+import translations from './translations.json';
 import blockIcon from './block-icon.png';
 
 /**
  * Formatter which is used for translation.
  * This will be replaced which is used in the runtime.
- * @param {*} messageData - format-message object
+ * @param {object} messageData - format-message object
  * @returns {string} - message for the locale
  */
 let formatMessage = messageData => messageData.defaultMessage;
@@ -89,8 +89,10 @@ class ExtensionBlocks {
     }
 
     doIt (args) {
-        const func = new Function(`return (${args.SCRIPT})`);
-        return func.call(this);
+        const func = new Function(`return (${Cast.toString(args.SCRIPT)})`);
+        const result = func.call(this);
+        log.log(result);
+        return result;
     }
 
     /**
