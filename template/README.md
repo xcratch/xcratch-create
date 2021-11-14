@@ -39,15 +39,6 @@ Run build script to bundle this extension into a module file which could be load
 npm run build
 ```
 
-### Linting
-
-Install Scratch eslint-config to coding.
-
-```sh
-npm install
-```
-
-
 ## 🏠 Home Page
 
 Open this page from [https://<<account>>.github.io/<<repo>>/](https://<<account>>.github.io/<<repo>>/)
