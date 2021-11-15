@@ -1,7 +1,6 @@
 import BlockType from '../../extension-support/block-type';
 import ArgumentType from '../../extension-support/argument-type';
 import Cast from '../../util/cast';
-import log from '../../util/log';
 import translations from './translations.json';
 import blockIcon from './block-icon.png';
 
@@ -91,7 +90,7 @@ class ExtensionBlocks {
     doIt (args) {
         const func = new Function(`return (${Cast.toString(args.SCRIPT)})`);
         const result = func.call(this);
-        log.log(result);
+        console.log(result);
         return result;
     }
 

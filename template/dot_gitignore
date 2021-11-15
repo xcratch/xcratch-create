@@ -1,1 +1,3 @@
 /node_modules
+/src/vm/extension-support
+/src/vm/util
