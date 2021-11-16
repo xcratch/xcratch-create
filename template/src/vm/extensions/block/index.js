@@ -16,9 +16,13 @@ let formatMessage = messageData => messageData.defaultMessage;
  * Setup format-message for this extension.
  */
 const setupTranslations = () => {
-    formatMessage.setup({
-        translations: translations
-    });
+    const localeSetup = formatMessage.setup();
+    if (localeSetup && localeSetup.translations[localeSetup.locale]) {
+        Object.assign(
+            localeSetup.translations[localeSetup.locale],
+            translations[localeSetup.locale]
+        );
+    }
 };
 
 const EXTENSION_ID = '<<extensionID>>';
