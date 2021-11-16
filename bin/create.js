@@ -5,6 +5,7 @@ const path = require('path');
 const replace = require('replace-in-file');
 const fs = require('fs-extra');
 const admZip = require('adm-zip');
+const projectJson = require('../package.json');
 
 function getArgs() {
     const args = {};
@@ -32,7 +33,7 @@ function getArgs() {
 const args = getArgs();
 
 if (args['version'] || args['V']) {
-    process.stdout.write(`v.${process.env.npm_package_version}\n`);
+    process.stdout.write(`v${projectJson.version}\n`);
     process.exit(0);
 }
 
