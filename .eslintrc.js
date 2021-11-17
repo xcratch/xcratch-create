@@ -7,7 +7,7 @@ module.exports = {
         "node": true
     },
     "parserOptions": {
-        "sourceType": "script",
+        "sourceType": "module",
         "ecmaVersion": 2017,
     },
     "globals":{
