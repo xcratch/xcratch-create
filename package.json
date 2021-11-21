@@ -1,6 +1,6 @@
 {
   "name": "xcratch-create",
-  "version": "0.5.3",
+  "version": "0.5.4",
   "description": "Support tool to create new extension for Xcratch",
   "bin": {
     "xcratch-create": "./bin/create.js"
