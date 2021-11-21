@@ -2,11 +2,11 @@
   "name": "<<repo>>",
   "version": "0.0.0",
   "scripts": {
-    "register": "npx xcratch-register --link -C --id=<<extensionID>> --gui=\"../scratch-gui\" --block=\"./src/vm/extensions/block\" --entry=\"./src/gui/lib/libraries/extensions/entry\"",
-    "build": "npx xcratch-build --module=<<extensionID>> --gui=\"../scratch-gui\" --block=\"./src/vm/extensions/block\" --entry=\"./src/gui/lib/libraries/extensions/entry\""
+    "register": "npx xcratch-register --id=<<extensionID>> --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry -core --link --use=extension-support util",
+    "build": "npx xcratch-build --module=<<extensionID>> --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry"
   },
   "devDependencies": {
     "xcratch-build": "^0.3.0",
-    "xcratch-register": "^0.3.1"
+    "xcratch-register": "^0.4.0"
   }
 }
