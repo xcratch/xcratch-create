@@ -6,7 +6,7 @@
     "build": "npx xcratch-build --module=<<extensionID>> --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry"
   },
   "devDependencies": {
-    "xcratch-build": "^0.3.0",
-    "xcratch-register": "^0.4.0"
+    "xcratch-build": "^0.4.0",
+    "xcratch-register": "^0.4.2"
   }
 }
