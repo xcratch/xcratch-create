@@ -40,6 +40,15 @@ let extensionURL = 'https://<<account>>.github.io/<<repo>>/dist/<<extensionID>>.
 class ExtensionBlocks {
 
     /**
+     * A translation object which is used in this class.
+     * @param {FormatObject} formatter - translation object
+     */
+    static set formatMessage (formatter) {
+        formatMessage = formatter;
+        if (formatMessage) setupTranslations();
+    }
+
+    /**
      * @return {string} - the name of this extension.
      */
     static get EXTENSION_NAME () {
