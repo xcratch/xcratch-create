@@ -111,7 +111,7 @@ async function resetRepo() {
         const examplePath = path.resolve(outputDir, 'projects/example');
         zip.addLocalFolder(examplePath);
         zip.writeZip(path.resolve(outputDir, 'projects/example.sb3'));
-        fs.rmdirSync(examplePath, {recursive:true, force:true});
+        fs.rm(examplePath, {recursive:true, force:true});
     } catch (error) {
         console.error('Error occurred:', error);
     }
