@@ -1,6 +1,7 @@
 import BlockType from '../../extension-support/block-type';
 import ArgumentType from '../../extension-support/argument-type';
 import Cast from '../../util/cast';
+import log from '../../util/log';
 import translations from './translations.json';
 import blockIcon from './block-icon.png';
 
@@ -10,7 +11,7 @@ import blockIcon from './block-icon.png';
  * @param {object} messageData - format-message object
  * @returns {string} - message for the locale
  */
-let formatMessage = messageData => messageData.defaultMessage;
+let formatMessage = messageData => messageData.default;
 
 /**
  * Setup format-message for this extension.
@@ -38,7 +39,6 @@ let extensionURL = 'https://<<account>>.github.io/<<repo>>/dist/<<extensionID>>.
  * Scratch 3.0 blocks for example of Xcratch.
  */
 class ExtensionBlocks {
-
     /**
      * A translation object which is used in this class.
      * @param {FormatObject} formatter - translation object
@@ -100,13 +100,6 @@ class ExtensionBlocks {
         }
     }
 
-    doIt (args) {
-        const func = new Function(`return (${Cast.toString(args.SCRIPT)})`);
-        const result = func.call(this);
-        console.log(result);
-        return result;
-    }
-
     /**
      * @returns {object} metadata for this extension and its blocks.
      */
@@ -141,9 +134,13 @@ class ExtensionBlocks {
             }
         };
     }
+
+    doIt (args) {
+        const statement = Cast.toString(args.SCRIPT);
+        const func = new Function(`return (${statement})`);
+        log.log(`doIt: ${statement}`);
+        return func.call(this);
+    }
 }
 
-export {
-    ExtensionBlocks as default,
-    ExtensionBlocks as blockClass
-};
+export {ExtensionBlocks as default, ExtensionBlocks as blockClass};

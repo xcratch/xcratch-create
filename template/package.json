@@ -2,11 +2,34 @@
   "name": "<<repo>>",
   "version": "0.0.0",
   "scripts": {
-    "register": "npx xcratch-register --id=<<extensionID>> --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry --core --link --use=extension-support util",
-    "build": "npx xcratch-build --module=<<extensionID>> --gui=../scratch-gui --block=./src/vm/extensions/block --entry=./src/gui/lib/libraries/extensions/entry"
+    "setup-dev": "node ./scripts/setup-dev.mjs",
+    "build": "rollup -c ./scripts/rollup.config.mjs",
+    "watch": "rollup -c ./scripts/rollup.config.mjs --watch",
+    "test": "mocha"
   },
   "devDependencies": {
-    "xcratch-build": "^0.4.0",
-    "xcratch-register": "^0.4.2"
+    "@babel/core": "^7.23.7",
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/plugin-transform-react-jsx": "^7.23.4",
+    "@babel/plugin-transform-runtime": "^7.23.7",
+    "@babel/preset-env": "^7.23.7",
+    "@babel/preset-react": "^7.23.3",
+    "@babel/register": "^7.23.7",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-image": "^3.0.3",
+    "@rollup/plugin-json": "^6.1.0",
+    "@rollup/plugin-multi-entry": "^6.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "chai": "^4.3.10",
+    "eslint": "^8.56.0",
+    "eslint-config-scratch": "^9.0.3",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-mocha": "^10.2.0",
+    "fs-extra": "^11.2.0",
+    "mocha": "^10.2.0",
+    "rollup": "^4.9.2",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-polyfill-node": "^0.13.0"
   }
 }

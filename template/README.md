@@ -23,12 +23,18 @@ https://<<account>>.github.io/<<repo>>/dist/<<extensionID>>.mjs
 
 ## Development
 
-### Register on the local Xcratch
-
-Run register script to install this extension on the local Xcratch for testing.
+### Install Dependencies
 
 ```sh
-npm run register
+npm install
+```
+
+### Setup Development Environment
+
+Change ```vmSrcOrg``` to your local ```scratch-vm``` directory in ```./scripts/setup-dev.js``` then run setup-dev script to setup development environment.
+
+```sh
+npm run setup-dev
 ```
 
 ### Bundle into a Module
@@ -38,6 +44,23 @@ Run build script to bundle this extension into a module file which could be load
 ```sh
 npm run build
 ```
+
+### Watch and Bundle
+
+Run watch script to watch the changes of source files and bundle automatically.
+
+```sh
+npm run watch
+```
+
+### Test
+
+Run test script to test this extension.
+
+```sh
+npm run test
+```
+
 
 ## 🏠 Home Page
 

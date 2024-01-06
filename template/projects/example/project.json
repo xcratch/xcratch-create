@@ -1,159 +1,158 @@
 {
-  "targets": [
-    {
-      "isStage": true,
-      "name": "Stage",
-      "variables": {
-        "`jEk@4|i[#Fk?(8x)AV.-my variable": [
-          "my variable",
-          0
+    "targets": [
+        {
+            "isStage": true,
+            "name": "Stage",
+            "variables": {
+                "`jEk@4|i[#Fk?(8x)AV.-my variable": [
+                    "my variable",
+                    0
+                ]
+            },
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {},
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "backdrop1",
+                    "dataFormat": "svg",
+                    "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+                    "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+                    "rotationCenterX": 240,
+                    "rotationCenterY": 180
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "pop",
+                    "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 48000,
+                    "sampleCount": 1123,
+                    "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 0,
+            "tempo": 60,
+            "videoTransparency": 50,
+            "videoState": "on",
+            "textToSpeechLanguage": null
+        },
+        {
+            "isStage": false,
+            "name": "Sprite1",
+            "variables": {},
+            "lists": {},
+            "broadcasts": {},
+            "blocks": {
+                "`sNsDW0Yj~Q,M=~,,O|@": {
+                    "opcode": "event_whenflagclicked",
+                    "next": "2GthS.8+si{!3dHoqas,",
+                    "parent": null,
+                    "inputs": {},
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": true,
+                    "x": 44,
+                    "y": 44
+                },
+                "2GthS.8+si{!3dHoqas,": {
+                    "opcode": "looks_say",
+                    "next": null,
+                    "parent": "`sNsDW0Yj~Q,M=~,,O|@",
+                    "inputs": {
+                        "MESSAGE": [
+                            3,
+                            "nQ]C2TOO}(vYi-.bOQ.)",
+                            [
+                                10,
+                                "Hello!"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                },
+                "nQ]C2TOO}(vYi-.bOQ.)": {
+                    "opcode": "<<extensionID>>_do-it",
+                    "next": null,
+                    "parent": "2GthS.8+si{!3dHoqas,",
+                    "inputs": {
+                        "SCRIPT": [
+                            1,
+                            [
+                                10,
+                                "3 + 4"
+                            ]
+                        ]
+                    },
+                    "fields": {},
+                    "shadow": false,
+                    "topLevel": false
+                }
+            },
+            "comments": {},
+            "currentCostume": 0,
+            "costumes": [
+                {
+                    "name": "costume1",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "881c5994e99006fc05359d738af66337",
+                    "md5ext": "881c5994e99006fc05359d738af66337.svg",
+                    "rotationCenterX": 65.85918426513672,
+                    "rotationCenterY": 24.999961853027344
+                },
+                {
+                    "name": "costume2",
+                    "bitmapResolution": 1,
+                    "dataFormat": "svg",
+                    "assetId": "b6e71f1bf154c8a5470665fe87dd507c",
+                    "md5ext": "b6e71f1bf154c8a5470665fe87dd507c.svg",
+                    "rotationCenterX": 65.85923767089844,
+                    "rotationCenterY": 24.999961853027344
+                }
+            ],
+            "sounds": [
+                {
+                    "name": "Meow",
+                    "assetId": "83c36d806dc92327b9e7049a565c6bff",
+                    "dataFormat": "wav",
+                    "format": "",
+                    "rate": 48000,
+                    "sampleCount": 40681,
+                    "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
+                }
+            ],
+            "volume": 100,
+            "layerOrder": 1,
+            "visible": true,
+            "x": 0,
+            "y": 0,
+            "size": 100,
+            "direction": 90,
+            "draggable": false,
+            "rotationStyle": "all around"
+        }
+    ],
+    "monitors": [],
+    "extensions": [
+        "<<extensionID>>"
+    ],
+    "extensionURLs": [
+        [
+            "<<extensionID>>",
+            "https://<<account>>.github.io/<<repo>>/dist/<<extensionID>>.mjs"
         ]
-      },
-      "lists": {},
-      "broadcasts": {},
-      "blocks": {},
-      "comments": {},
-      "currentCostume": 0,
-      "costumes": [
-        {
-          "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
-          "name": "backdrop1",
-          "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
-          "dataFormat": "svg",
-          "rotationCenterX": 240,
-          "rotationCenterY": 180
-        }
-      ],
-      "sounds": [
-        {
-          "assetId": "83a9787d4cb6f3b7632b4ddfebf74367",
-          "name": "pop",
-          "dataFormat": "wav",
-          "format": "",
-          "rate": 44100,
-          "sampleCount": 1032,
-          "md5ext": "83a9787d4cb6f3b7632b4ddfebf74367.wav"
-        }
-      ],
-      "volume": 100,
-      "layerOrder": 0,
-      "tempo": 60,
-      "videoTransparency": 50,
-      "videoState": "on",
-      "textToSpeechLanguage": null
-    },
-    {
-      "isStage": false,
-      "name": "Sprite1",
-      "variables": {},
-      "lists": {},
-      "broadcasts": {},
-      "blocks": {
-        "a4=fP3v4=(4iJp:x.yP5": {
-          "opcode": "looks_say",
-          "next": null,
-          "parent": "u0,7tME{KvwEe3VhJ:y;",
-          "inputs": {
-            "MESSAGE": [
-              3,
-              "0Ma!O1n;`PPH|iLNW*nO",
-              [
-                10,
-                "Hello!"
-              ]
-            ]
-          },
-          "fields": {},
-          "shadow": false,
-          "topLevel": false
-        },
-        "u0,7tME{KvwEe3VhJ:y;": {
-          "opcode": "event_whenflagclicked",
-          "next": "a4=fP3v4=(4iJp:x.yP5",
-          "parent": null,
-          "inputs": {},
-          "fields": {},
-          "shadow": false,
-          "topLevel": true,
-          "x": 96,
-          "y": 77
-        },
-        "0Ma!O1n;`PPH|iLNW*nO": {
-          "opcode": "<<extensionID>>_do-it",
-          "next": null,
-          "parent": "a4=fP3v4=(4iJp:x.yP5",
-          "inputs": {
-            "SCRIPT": [
-              1,
-              [
-                10,
-                "3 + 4"
-              ]
-            ]
-          },
-          "fields": {},
-          "shadow": false,
-          "topLevel": false
-        }
-      },
-      "comments": {},
-      "currentCostume": 0,
-      "costumes": [
-        {
-          "assetId": "bcf454acf82e4504149f7ffe07081dbc",
-          "name": "costume1",
-          "bitmapResolution": 1,
-          "md5ext": "bcf454acf82e4504149f7ffe07081dbc.svg",
-          "dataFormat": "svg",
-          "rotationCenterX": 72.5,
-          "rotationCenterY": 27.5
-        },
-        {
-          "assetId": "0fb9be3e8397c983338cb71dc84d0b25",
-          "name": "costume2",
-          "bitmapResolution": 1,
-          "md5ext": "0fb9be3e8397c983338cb71dc84d0b25.svg",
-          "dataFormat": "svg",
-          "rotationCenterX": 72.5,
-          "rotationCenterY": 27.5
-        }
-      ],
-      "sounds": [
-        {
-          "assetId": "83c36d806dc92327b9e7049a565c6bff",
-          "name": "Meow",
-          "dataFormat": "wav",
-          "format": "",
-          "rate": 44100,
-          "sampleCount": 37376,
-          "md5ext": "83c36d806dc92327b9e7049a565c6bff.wav"
-        }
-      ],
-      "volume": 100,
-      "layerOrder": 1,
-      "visible": true,
-      "x": 0,
-      "y": 0,
-      "size": 100,
-      "direction": 90,
-      "draggable": false,
-      "rotationStyle": "all around"
+    ],
+    "meta": {
+        "semver": "3.0.0",
+        "vm": "2.1.14",
+        "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
     }
-  ],
-  "monitors": [],
-  "extensions": [
-    "<<extensionID>>"
-  ],
-  "extensionURLs": [
-    [
-      "<<extensionID>>",
-      "https://<<account>>.github.io/<<repo>>/dist/<<extensionID>>.mjs"
-    ]
-  ],
-  "meta": {
-    "semver": "3.0.0",
-    "vm": "0.2.0",
-    "origin": "https://xcratch.github.io/editor",
-    "agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/93.0.4577.63 Safari/537.36"
-  }
 }

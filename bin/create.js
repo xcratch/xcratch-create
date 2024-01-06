@@ -75,12 +75,7 @@ async function fetchTemplate() {
 
 const options = {
     files: [
-        'README.md',
-        'package.json',
-        'src/**/*.js',
-        'src/**/*.jsx',
-        'src/**/*.json',
-        'projects/example/project.json',
+        './**/*',
     ],
     from: [
         /<<account>>/g,
