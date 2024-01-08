@@ -20,6 +20,9 @@ This extension can be used with other extension in [Xcratch](https://xcratch.git
 ```
 https://<<account>>.github.io/<<repo>>/dist/<<extensionID>>.mjs
 ```
+5. Click 'OK' button
+6. Now you can use the blocks of this extension
+
 
 ## Development
 
