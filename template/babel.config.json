@@ -1,13 +1,18 @@
 {
-    "presets": [
-      [
-        "@babel/preset-env",
-        {
-          "targets": {
-            "node": true
-          },
-          "useBuiltIns": "entry"
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": true
+        },
+        "useBuiltIns": "entry",
+        "corejs": {
+          "version": "3",
+          "proposals": true
         }
-      ]
-    ]
-  }
+      }
+    ],
+    "@babel/preset-react"
+  ]
+}
