@@ -8,6 +8,7 @@ describe("blockClass", () => {
             return msg.default;
         }
     };
+
     it("should create an instance of blockClass", () => {
         const block = new blockClass(runtime);
         expect(block).to.be.an.instanceOf(blockClass);
