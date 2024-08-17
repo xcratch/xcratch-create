@@ -95,8 +95,7 @@ async function resetRepo() {
     process.chdir(outputDir);
     fs.renameSync('dot_gitignore', '.gitignore');
     try {
-        const results = await replace(options)
-        console.log('Replacement results:', results);
+        await replace(options)
     }
     catch (error) {
         console.error('Error occurred:', error);
@@ -106,11 +105,14 @@ async function resetRepo() {
         const examplePath = path.resolve(outputDir, 'projects/example');
         zip.addLocalFolder(examplePath);
         zip.writeZip(path.resolve(outputDir, 'projects/example.sb3'));
-        fs.rm(examplePath, {recursive:true, force:true});
+        return fs.rm(examplePath, { recursive: true, force: true });
     } catch (error) {
         console.error('Error occurred:', error);
     }
 }
 
 fetchTemplate()
-    .then(() => resetRepo());
+    .then(() => resetRepo())
+    .then(() => {
+        process.stdout.write(`Create scaffolding project: ${outputDir}\n`);
+    })
