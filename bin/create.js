@@ -1,28 +1,25 @@
 #!/usr/bin/env node
-'use strict'
 
-const path = require('path');
-const replace = require('replace-in-file');
-const fs = require('fs-extra');
-const admZip = require('adm-zip');
-const projectJson = require('../package.json');
+import path from 'path';
+import { replaceInFile } from 'replace-in-file';
+import fs from 'fs-extra';
+import AdmZip from 'adm-zip';
+import projectJson from '../package.json' assert { type: 'json' };
+
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 function getArgs() {
     const args = {};
     process.argv
-        .slice(2, process.argv.length)
+        .slice(2) // Start from the third argument (ignoring Node and script path)
         .forEach(arg => {
-            if (arg.slice(0, 2) === '--') {
-                // long arg
-                const longArg = arg.split('=');
-                const longArgFlag = longArg[0].slice(2, longArg[0].length);
-                const longArgValue = longArg.length > 1 ? longArg[1] : true;
-                args[longArgFlag] = longArgValue;
-            }
-            else if (arg[0] === '-') {
-                // flags
-                const flags = arg.slice(1, arg.length).split('');
-                flags.forEach(flag => {
+            if (arg.startsWith('--')) {
+                // Long argument (e.g., --account=my-account)
+                const [longArgFlag, ...rest] = arg.slice(2).split('=');
+                args[longArgFlag] = rest.join('=') || true; // Handle arguments with and without values
+            } else if (arg.startsWith('-')) {
+                // Flags (e.g., -abc becomes args.a = args.b = args.c = true)
+                arg.slice(1).split('').forEach(flag => {
                     args[flag] = true;
                 });
             }
@@ -32,87 +29,97 @@ function getArgs() {
 
 const args = getArgs();
 
-if (args['version'] || args['V']) {
+// Check for version request
+if (args.version || args.V) {
     process.stdout.write(`v${projectJson.version}\n`);
-    process.exit(0);
+    process.exit(0); // Exit successfully after displaying version
 }
 
-if (!args['account']) {
+// Validate required arguments
+if (!args.account) {
     process.stderr.write('"--account=<github account>" is not set\n');
-    process.exit(1);
+    process.exit(1); // Exit with an error code
 }
-const account = args['account'];
+const account = args.account;
 
-if (!args['repo']) {
+if (!args.repo) {
     process.stderr.write('"--repo=<github repository>" is not set\n');
     process.exit(1);
 }
-const repo = args['repo'];
+const repo = args.repo;
 
-if (!args['extensionID']) {
+if (!args.extensionID) {
     process.stderr.write('"--extensionID=<extension ID>" is not set\n');
     process.exit(1);
 }
-const extensionID = args['extensionID'];
+const extensionID = args.extensionID;
 
-if (!args['extensionName']) {
+if (!args.extensionName) {
     process.stderr.write('"--extensionName=<extension name>" is not set\n');
     process.exit(1);
 }
-const extensionName = args['extensionName'];
+const extensionName = args.extensionName;
 
-const outputDir = args['out'] ?
-    path.resolve(process.cwd(), args['out']) :
-    path.resolve(process.cwd(), repo);
+// Determine output directory
+const outputDir = args.out
+    ? path.resolve(process.cwd(), args.out)
+    : path.resolve(process.cwd(), repo);
 
-/**
- * Fetch template files
- * 
- */
+// Fetch the project template
 async function fetchTemplate() {
-    fs.copySync(path.resolve(__dirname, '../template'), outputDir);
+    try {
+        await fs.copy(path.resolve(__dirname, '../template'), outputDir);
+    } catch (error) {
+        console.error('Error fetching template:', error);
+        process.exit(1);
+    }
 }
 
+// Replacement options for template files
 const options = {
-    files: [
-        './**/*',
-    ],
+    files: ['./**/*'], // Target all files in the output directory
     from: [
         /<<account>>/g,
         /<<repo>>/g,
         /<<extensionID>>/g,
         /<<extensionName>>/g,
     ],
-    to: [
-        account,
-        repo,
-        extensionID,
-        extensionName,
-    ],
+    to: [account, repo, extensionID, extensionName],
 };
 
+// Customize the template with provided arguments
 async function resetRepo() {
-    process.chdir(outputDir);
-    fs.renameSync('dot_gitignore', '.gitignore');
     try {
-        await replace(options)
-    }
-    catch (error) {
-        console.error('Error occurred:', error);
-    }
-    try {
-        const zip = new admZip();
+        process.chdir(outputDir); // Change working directory to the output directory
+
+        // Rename .gitignore file
+        await fs.rename('dot_gitignore', '.gitignore');
+
+        // Replace placeholders in template files
+        await replaceInFile(options);
+
+        // Zip the example project directory
+        const zip = new AdmZip();
         const examplePath = path.resolve(outputDir, 'projects/example');
         zip.addLocalFolder(examplePath);
         zip.writeZip(path.resolve(outputDir, 'projects/example.sb3'));
-        return fs.rm(examplePath, { recursive: true, force: true });
+
+        // Remove the original example directory
+        await fs.rm(examplePath, { recursive: true, force: true });
+
+        console.log(`Scaffolding project created at: ${outputDir}`);
+
     } catch (error) {
         console.error('Error occurred:', error);
+        process.exit(1);
     }
 }
 
+// Execute the setup process
 fetchTemplate()
-    .then(() => resetRepo())
-    .then(() => {
-        process.stdout.write(`Create scaffolding project: ${outputDir}\n`);
-    })
+    .then(resetRepo) 
+    .catch(error => {
+        console.error('Error during setup:', error);
+        process.exit(1); 
+    });
+

@@ -2,6 +2,7 @@
   "name": "xcratch-create",
   "version": "1.0.1",
   "description": "Support tool to create new extension for Xcratch",
+  "type": "module",
   "bin": {
     "xcratch-create": "./bin/create.js"
   },
@@ -27,8 +28,8 @@
   },
   "homepage": "https://github.com/xcratch/xcratch-create#readme",
   "dependencies": {
-    "adm-zip": "^0.5.10",
+    "adm-zip": "^0.5.15",
     "fs-extra": "^11.2.0",
-    "replace-in-file": "^7.1.0"
+    "replace-in-file": "^8.1.0"
   }
 }
