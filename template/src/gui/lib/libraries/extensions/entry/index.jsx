@@ -34,6 +34,7 @@ const entry = {
             id: '<<extensionID>>.entry.description'
         });
     },
+    tags: [],
     featured: true,
     disabled: false,
     bluetoothRequired: false,
