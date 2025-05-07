@@ -1,11 +1,11 @@
 module.exports = {
   root: true,
-  plugins: ["mocha"],
-  extends: ["plugin:mocha/recommended"],
+  plugins: ["jest"],
+  extends: ["plugin:jest/recommended"],
   env: {
     browser: true,
     es6: true,
-    mocha: true,
+    "jest/globals": true,
   },
   parserOptions: {
     sourceType: "module",

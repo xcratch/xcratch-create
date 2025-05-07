@@ -6,7 +6,7 @@
     "setup-dev": "node ./scripts/setup-dev.mjs",
     "build": "rollup -c ./scripts/rollup.config.mjs",
     "watch": "rollup -c ./scripts/rollup.config.mjs --watch",
-    "test": "mocha"
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "devDependencies": {
     "@babel/core": "^7.26.9",
@@ -22,14 +22,14 @@
     "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-multi-entry": "^6.0.1",
     "@rollup/plugin-node-resolve": "^16.0.0",
-    "chai": "^5.2.0",
     "core-js": "^3.40.0",
     "eslint": "^8.57.0",
     "eslint-config-scratch": "^9.0.9",
     "eslint-plugin-import": "^2.31.0",
-    "eslint-plugin-mocha": "^10.5.0",
+    "eslint-plugin-jest": "^27.6.3",
     "fs-extra": "^11.3.0",
-    "mocha": "^11.1.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "rollup": "^4.34.7",
     "rollup-plugin-polyfill-node": "^0.13.0"
   }
