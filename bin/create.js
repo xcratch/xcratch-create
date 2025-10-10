@@ -4,7 +4,8 @@ import path from 'path';
 import { replaceInFile } from 'replace-in-file';
 import fs from 'fs-extra';
 import AdmZip from 'adm-zip';
-import projectJson from '../package.json' assert { type: 'json' };
+
+const projectJson = await fs.readJson(path.resolve(path.dirname(new URL(import.meta.url).pathname), '../package.json'));
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
