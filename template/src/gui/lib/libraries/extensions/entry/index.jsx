@@ -5,6 +5,7 @@
 import iconURL from './entry-icon.png';
 import insetIconURL from './inset-icon.svg';
 import translations from './translations.json';
+import {version as packageVersion} from '../../../../../../package.json';
 
 /**
  * Formatter to translate the messages in this extension.
@@ -13,6 +14,8 @@ import translations from './translations.json';
  * @returns {string} - translated message for the current locale
  */
 let formatMessage = messageData => messageData.defaultMessage;
+
+const version = `v${packageVersion}`;
 
 const entry = {
     get name () {
@@ -28,11 +31,11 @@ const entry = {
     iconURL: iconURL,
     insetIconURL: insetIconURL,
     get description () {
-        return formatMessage({
+        return `${formatMessage({
             defaultMessage: 'an extension for Xcratch',
             description: 'Description for this extension',
             id: '<<extensionID>>.entry.description'
-        });
+        })} (${version})`;
     },
     tags: [],
     featured: true,
