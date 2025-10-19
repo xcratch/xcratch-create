@@ -1,0 +1,54 @@
+name: Deploy
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to publish"
+        default: "main"
+        required: true
+      publish-dir:
+        description: "Publish directory"
+        type: string
+        default: "."
+        required: true
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: inputs
+        run: echo "${{ toJSON(inputs) }}"
+      - name: Set branch and publish-dir
+        id: config
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            echo "branch=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+            echo "publish-dir=." >> $GITHUB_OUTPUT
+          else
+            echo "branch=${{ inputs.branch }}" >> $GITHUB_OUTPUT
+            echo "publish-dir=${{ inputs.publish-dir }}" >> $GITHUB_OUTPUT
+          fi
+      - name: checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.config.outputs.branch }}
+          path: ./repo
+      - name: copy files
+        run: |
+          mkdir -p ./publish
+          cp -r ./repo/dist ./publish/dist
+          cp -r ./repo/projects ./publish/projects
+          cp -r ./repo/README.md ./publish/README.md
+      - name: publish to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./publish
+          destination_dir: ${{ steps.config.outputs.publish-dir }}
+          keep_files: false
+          enable_jekyll: true

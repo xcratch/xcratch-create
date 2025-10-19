@@ -64,6 +64,66 @@ Run test script to test this extension.
 npm run test
 ```
 
+### Versioning and Deployment
+
+This project uses npm version commands and GitHub Actions for versioning and deployment.
+
+#### Create a New Version
+
+Use npm version command to update the version number. This will automatically:
+1. Update version in `package.json`
+2. Run the build script
+3. Create version-specific build files in `dist/{version}/`
+4. Update `dist/versions.json` with the new version info
+5. Create a git commit and tag
+
+```sh
+# Patch version (1.3.0 → 1.3.1)
+npm version patch
+
+# Minor version (1.3.1 → 1.4.0)
+npm version minor
+
+# Major version (1.4.0 → 2.0.0)
+npm version major
+```
+
+#### Deploy to GitHub Pages
+
+After creating a new version, push the tag to trigger automatic deployment:
+
+```sh
+# Push the version tag
+git push origin v1.4.0
+
+# Or push all tags
+git push --tags
+```
+
+The GitHub Actions workflow will:
+1. Build the extension
+2. Deploy `dist/`, `projects/`, and `README.md` to GitHub Pages
+
+You can also manually trigger deployment from the Actions tab in GitHub.
+
+#### Version Information
+
+All build versions are recorded in `dist/versions.json`:
+
+```json
+{
+  "extensionId": "<<extensionID>>",
+  "latest": "1.0.0",
+  "versions": [
+    {
+      "version": "1.0.0",
+      "buildDate": "2025-10-19T12:34:56.789Z",
+      "module": "1.0.0/<<extensionID>>.mjs"
+    }
+  ]
+}
+```
+
 
 ## 🏠 Home Page
 

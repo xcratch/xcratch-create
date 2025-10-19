@@ -9,6 +9,15 @@ import importImage from '@rollup/plugin-image';
 import multi from '@rollup/plugin-multi-entry';
 import json from '@rollup/plugin-json';
 
+// Read package.json to get extensionId
+const packageJsonPath = path.resolve(process.cwd(), './package.json');
+const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'));
+const EXTENSION_ID = packageJson.extensionId;
+if (!EXTENSION_ID) {
+    console.error('Error: extensionId not found in package.json');
+    process.exit(1);
+}
+
 // path for block
 const blockSrcDir = path.resolve(process.cwd(), './src/vm/extensions/block');
 const blockFile = path.resolve(blockSrcDir, 'index.js');
@@ -16,13 +25,12 @@ const blockFile = path.resolve(blockSrcDir, 'index.js');
 const entrySrcDir = path.resolve(process.cwd(), './src/gui/lib/libraries/extensions/entry');
 const entryFile = path.resolve(entrySrcDir, 'index.jsx');
 // path for output
-const moduleName = '<<extensionID>>';
 const outputDir = path.resolve(process.cwd(), './dist');
-fs.emptyDirSync(outputDir);
-const moduleFile = path.resolve(outputDir, `${moduleName}.mjs`);
+const moduleFile = path.resolve(outputDir, `${EXTENSION_ID}.mjs`);
 
 const rollupOptions = {
     input: [entryFile, blockFile],
+    context: `window`,
     plugins: [
         multi(),
         importImage(),
@@ -34,10 +42,14 @@ const rollupOptions = {
             modulePaths: [
                 path.resolve(process.cwd(), './node_modules'),
             ],
+            // Add these options to better resolve @babel/runtime
+            include: ['**'],
+            skip: [],
         }),
         json(),
         babel({
             babelrc: false,
+            exclude: ['node_modules/**'],
             presets: [
                 ['@babel/preset-env',
                     {
@@ -55,8 +67,13 @@ const rollupOptions = {
             babelHelpers: 'runtime',
             plugins: [
                 '@babel/plugin-transform-react-jsx',
-                ["@babel/plugin-transform-runtime",
-                    { "regenerator": true }]
+                [
+                    "@babel/plugin-transform-runtime",
+                    { 
+                        "regenerator": true,
+                        "useESModules": true
+                    }
+                ]
             ],
         }),
     ],
