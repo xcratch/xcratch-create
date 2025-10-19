@@ -2,7 +2,6 @@
   "name": "<<repo>>",
   "version": "0.0.0",
   "description": "extension for Xcratch",
-  "type": "module",
   "extensionId": "<<extensionID>>",
   "scripts": {
     "setup-dev": "node ./scripts/setup-dev.mjs",
