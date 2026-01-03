@@ -4,13 +4,19 @@
 import path from 'path';
 import fs from 'fs-extra';
 
+// Get scratch-vm path from command line argument
+const args = process.argv.slice(2);
+const vmPath = args[0] || '../scratch-editor/packages/scratch-vm';
+
 // modify for your environment
 const vmSrcDev = path.resolve(process.cwd(), './src/vm');
-const vmSrcOrg = path.resolve(process.cwd(), '../scratch-vm/src');
+const vmSrcOrg = path.resolve(process.cwd(), vmPath, 'src');
 const vmRefs = [
     'extension-support',
     'util',
 ];
+
+console.log(`Using scratch-vm at: ${vmSrcOrg}`);
 
 // Make symbolic link
 const makeSymbolicLink = function (to, from) {
