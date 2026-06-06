@@ -36,6 +36,8 @@ if (args.version || args.V) {
     process.exit(0); // Exit successfully after displaying version
 }
 
+const initMode = !!args.init;
+
 // Validate required arguments
 if (!args.account) {
     process.stderr.write('"--account=<github account>" is not set\n');
@@ -44,8 +46,12 @@ if (!args.account) {
 const account = args.account;
 
 if (!args.repo) {
-    process.stderr.write('"--repo=<github repository>" is not set\n');
-    process.exit(1);
+    if (initMode) {
+        args.repo = path.basename(process.cwd());
+    } else {
+        process.stderr.write('"--repo=<github repository>" is not set\n');
+        process.exit(1);
+    }
 }
 const repo = args.repo;
 
@@ -64,12 +70,25 @@ const extensionName = args.extensionName;
 // Determine output directory
 const outputDir = args.out
     ? path.resolve(process.cwd(), args.out)
-    : path.resolve(process.cwd(), repo);
+    : initMode
+        ? process.cwd()
+        : path.resolve(process.cwd(), repo);
 
 // Fetch the project template
 async function fetchTemplate() {
     try {
-        await fs.copy(path.resolve(__dirname, '../template'), outputDir);
+        if (initMode) {
+            const entries = await fs.readdir(outputDir);
+            if (entries.length > 0 && !args.force) {
+                process.stderr.write(`Warning: "${outputDir}" is not empty. Existing files will not be overwritten. Use --force to overwrite.\n`);
+            }
+            await fs.copy(path.resolve(__dirname, '../template'), outputDir, {
+                overwrite: !!args.force,
+                errorOnExist: false,
+            });
+        } else {
+            await fs.copy(path.resolve(__dirname, '../template'), outputDir);
+        }
     } catch (error) {
         console.error('Error fetching template:', error);
         process.exit(1);
@@ -93,20 +112,22 @@ async function resetRepo() {
     try {
         process.chdir(outputDir); // Change working directory to the output directory
 
-        // Rename .gitignore file
-        await fs.rename('dot_gitignore', '.gitignore');
+        // Rename .gitignore file (skip if already exists)
+        if (await fs.pathExists('dot_gitignore')) {
+            await fs.rename('dot_gitignore', '.gitignore');
+        }
 
         // Replace placeholders in template files
         await replaceInFile(options);
 
-        // Zip the example project directory
-        const zip = new AdmZip();
+        // Zip the example project directory (skip if not present when using --init)
         const examplePath = path.resolve(outputDir, 'projects/example');
-        zip.addLocalFolder(examplePath);
-        zip.writeZip(path.resolve(outputDir, 'projects/example.sb3'));
-
-        // Remove the original example directory
-        await fs.rm(examplePath, { recursive: true, force: true });
+        if (await fs.pathExists(examplePath)) {
+            const zip = new AdmZip();
+            zip.addLocalFolder(examplePath);
+            zip.writeZip(path.resolve(outputDir, 'projects/example.sb3'));
+            await fs.rm(examplePath, { recursive: true, force: true });
+        }
 
         console.log(`Scaffolding project created at: ${outputDir}`);
 
