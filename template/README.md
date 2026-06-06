@@ -40,6 +40,23 @@ Change ```vmSrcOrg``` to your local ```scratch-vm``` directory in ```./scripts/s
 npm run setup-dev
 ```
 
+### Install xcratch-skills via APM
+
+Install [APM (Agent Package Manager)](https://github.com/microsoft/apm) and run:
+
+```sh
+apm install --target copilot
+```
+
+This automatically configures the skills across your agent clients. Once installed, you can use natural-language trigger phrases such as:
+
+| Trigger phrase | Skill invoked |
+|---|---|
+| `xcratch-create`, `scaffold extension` | `xcratch-extension-create` — scaffold a new extension repo and set up the dev environment |
+| `breakpoints not hit`, `debug on dev-server` | `xcratch-extension-debug` — fix source maps and local HTTPS issues |
+| `verify extension loads`, `check console errors` | `xcratch-extension-debug-auto` — autonomously navigate to the editor and inspect the loaded extension |
+| `add to stretch3`, `stretch3-install` | `xcratch-extension-stretch3` — generate the stretch3 install script and entry files |
+
 ### Bundle into a Module
 
 Run build script to bundle this extension into a module file which could be loaded on Xcratch.
