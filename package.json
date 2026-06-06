@@ -4,7 +4,7 @@
   "description": "Support tool to create new extension for Xcratch",
   "type": "module",
   "bin": {
-    "xcratch-create": "./bin/create.js"
+    "xcratch-create": "bin/create.js"
   },
   "files": [
     "/bin",
