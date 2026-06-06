@@ -27,7 +27,7 @@ const makeSymbolicLink = function (to, from) {
                 console.log(`Already exists link: ${from} -> ${fs.readlinkSync(from)}`);
                 return;
             }
-            fs.unlink(from);
+            fs.unlinkSync(from);
         } else {
             fs.renameSync(from, `${from}~`);
         }
