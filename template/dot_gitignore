@@ -14,3 +14,6 @@ apm_modules/
 
 # Playwright temporary files
 .playwright-*/*
+
+# Certificates and keys
+*.pem

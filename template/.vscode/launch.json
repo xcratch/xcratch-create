@@ -1,0 +1,41 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "preLaunchTask": "start live server",
+      "name": "debug extension on xcratch.github.io editor",
+      "url": "https://xcratch.github.io/editor/?extension=${input:extensionUrl}",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "sourceMapRenames": true,
+      "sourceMapPathOverrides": {
+        "https://0.0.0.0:5500/*": "${webRoot}/*", // local extension server for debugging
+      }
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "attach on xcratch.github.io editor",
+      "url": "https://xcratch.github.io/editor/?extension=${input:extensionUrl}",
+      "webRoot": "${workspaceFolder}",
+      "sourceMaps": true,
+      "sourceMapRenames": true,
+      "sourceMapPathOverrides": {
+        "https://0.0.0.0:5500/*": "${webRoot}/*", // local extension server for debugging
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "extensionUrl",
+      "type": "promptString",
+      "description": "Extension URL to load, for example: https://0.0.0.0:5500/dist/xcratchExample.mjs",
+      "default": "https://0.0.0.0:5500/dist/xcratchExample.mjs"
+    }
+  ]
+}
